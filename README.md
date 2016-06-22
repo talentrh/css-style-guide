@@ -72,7 +72,7 @@ Finalmente, propriedades são os elementos selecionados de uma regra de declara�
 * Não use seletores ID.
 * Quando usar múltiplos seletores em uma regra de declaração, ponha cada um em uma própria linha.
 * Coloque um espaço antes da abertura de chaves `{` em declaração de regras.
-* Em propriedades, coloque um espaço depois, mas não antes, do caracter `:` (dois-pontos).
+* Em propriedades, coloque um espaço depois, mas não antes do caractere `:` (dois-pontos).
 * Coloque chave de fechamento `}` de uma regra de declaração em uma nova linha.
 * Coloque linhas em branco entre declarações de regra.
 
