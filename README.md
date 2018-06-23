@@ -297,7 +297,6 @@ Sempre que possível, utilize prefixos nos nomes dos componentes, ex: `_modal-`,
 
 **RUIM**
 
-Sem prefixo no nome
 _new-user.scss
 ```scss
 .new-user {
@@ -305,7 +304,6 @@ _new-user.scss
 }
 ```
 
-Nome do arquivo diferente da class principal
 _modal-new-user.scss
 ```scss
 .new-user {
