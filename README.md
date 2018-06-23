@@ -1,4 +1,4 @@
-# Guia de estilo CSS / Sass Airbnb
+# Guia de estilo CSS / Sass
 
 *Uma abordagem mais razoável para CSS e Sass*
 
@@ -22,7 +22,9 @@
     - [Mixins](#mixins)
     - [Extend](#extend)
     - [Seletores agrupados](#seletores-agrupados)
-  1. [Tradução](#traducao)
+  1. [Estrutura](#estrutura)
+    - [Normalize.scss](#normalize.scss)
+    - [Components](#components)
 
 ## Terminologia
 
@@ -66,10 +68,8 @@ Finalmente, propriedades são os elementos selecionados de uma regra de declara�
 
 ### Formato
 
-* Use "soft tabs" (2 espaços) para identação.
 * Prefira dashes `(-)` no lugar de camelCasing em nomes de classes.
   - Underscores `(_)` e PascalCasing podem ser utilizados caso você use BEM (veja [OOCSS e BEM](#oocss-e-bem) abaixo).
-* Não use seletores ID.
 * Quando usar múltiplos seletores em uma regra de declaração, ponha cada um em uma própria linha.
 * Coloque um espaço antes da abertura de chaves `{` em declaração de regras.
 * Em propriedades, coloque um espaço depois, mas não antes do caractere `:` (dois-pontos).
@@ -77,7 +77,6 @@ Finalmente, propriedades são os elementos selecionados de uma regra de declara�
 * Coloque linhas em branco entre declarações de regra.
 
 **Ruim**
-
 ```css
 .avatar{
     border-radius:50%;
@@ -132,14 +131,10 @@ Nós incentivamos algumas combinações de OOCSS e BEM por três razões:
   * [BEM 101](https://css-tricks.com/bem-101/) de CSS Trick
   * [introduction to BEM](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) de Harry Roberts
 
-Nós recomendamos um variante do BEM com "blocos" em formato PascalCased, que funciona particularmente bem quando combinado com componentes (por exemplo React). Underscores e dashes ainda são utilizados para modificadores e filhos.
-
 **Exemplo**
 
-```jsx
-// ListingCard.jsx
-function ListingCard() {
-  return (
+```html
+
     <article class="ListingCard ListingCard--featured">
 
       <h1 class="ListingCard__title">Adorable 2BR in the sunny Mission</h1>
@@ -149,8 +144,6 @@ function ListingCard() {
       </div>
 
     </article>
-  );
-}
 ```
 
 ```css
@@ -170,16 +163,6 @@ function ListingCard() {
 Enquanto é possível selecionar elementos por ID em CSS, isto deveria ser considerado um anti-projeto. Seletores ID introduzem um nível alto de [especificidade](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) para suas declarações de regras e eles não são reutilizáveis.
 
 Para mais detalhes leia o seguinte [artigo do CSS Wizardry](http://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/) sobre como ligar com especificidade.
-
-### JavaScript hooks
-
-Evite vincular a mesma classe em seu CSS e JavaScript. Combinando os dois, muitas vezes resulta em tempo perdido durante refatoração, quando um desenvolvedor deve fazer uma referência cruzada de cada classe que está alterando e, pior ainda, o medo de quebrar alguma funcionalidade.
-
-Recomendamos a criação de classes específicas JavaScript para vinculação, com prefixo `.js-`:
-
-```html
-<button class="btn btn-primary js-request-to-book">Request to Book</button>
-```
 
 ### Border
 
@@ -259,9 +242,7 @@ Prefira nomes de variáveis com dash-cased (ex. `$my-variable`) do que camelCase
 
 Mixins devem ser usados para limpar seu código, adicionar clareza ou abstrair complexidade, assim como funções bem nomeadas. Mixins que aceitam nenhum argumento podem ser úteis para isto, mas note que se você não compactar seu payload (ex. gzip) isto pode contribuir para duplicação de código desnecessário nos estilos resultantes.
 
-### Extend
 
-`@extend` deve ser evitado porque possui comportamento não intuitivo e perigoso, especialmente quando usado em seletores agrupados. Mesmo extendendo os seletores placeholder de nível superior, isto pode causar problemas se a ordem dos seletores mudar mais tarde (ex. se eles estão em outros arquivos e a ordem dos mesmos variar). Gzipping lida com a maioria das economias que você teria ganho usando `@extend`, e, ainda, você pode limpar seus estilos muito bem com mixins.
 
 ### Seletores agrupados
 
@@ -283,16 +264,95 @@ Quando os seletores se tornam muito longos, você provavelmente está escrevendo
 * Excessivamente específico (poderoso) *—OU—*
 * Não reutilizável
 
+# Estrutura de arquivos
 
-Novamente: **nunca agrupe seletores ID!**
 
-Se você deve precisar utilizar um seletor ID (e você realmente não deveria fazer isto!), eles nunca devem ser agrupados. Se você está fazendo isto, revise sua marcação ou reflita o porquê tanta especificidade é necessária. Se você está escrevendo HTML e CSS bem formados, você **nunca** deveria usar isto!
+### normalize.scss
 
-## Tradução
+Contém as configurações padrões do site ex: tipo da fonte, resetar margens, etc.
 
-  Este guia também está disponível em outras linguas:
+### components
 
-  - ![cn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/China.png) **Chinese (Simplified)**: [Zhangjd/css-style-guide](https://github.com/Zhangjd/css-style-guide)
-  - ![ru](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Russia.png) **Russian**: [Nekorsis/css-style-guide](https://github.com/Nekorsis/css-style-guide)
-  - ![ja](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Japan.png) **Japanese**: [nao215/css-style-guide](https://github.com/nao215/css-style-guide)
-  - ![es](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Spain.png) **Spanish**: [ismamz/guia-de-estilo-css](https://github.com/ismamz/guia-de-estilo-css)
+Novos estilos devem ser criados na pasta `components`, o padrão para novos arquivos são:
+
+* Nome iniciar com `_`.
+* Nome deve conter dashes `(-)` no lugar de camelCasing.
+
+Exemplo:
+**Ruim**
+
+```
+meu-componente.scss
+meuComponente.scss
+_meuComponente.scss
+```
+
+**Bom**
+
+```css
+_meu-componente.scss
+```
+
+Sempre utilizar uma class única na criação de um componente, essa class também deve ter o mesmo nome do arquivo sem `_` e `.scss`.
+Sempre que possível, utilize prefixos nos nomes dos componentes, ex: `_modal-`, `_card-`, `_list-`, etc.
+
+Exemplo:
+**RUIM**
+
+`Sem prefixo no nome`
+_new-user.scss
+```scss
+.new-user {
+  ...
+}
+```
+
+`Nome do arquivo diferente da class principal`
+_modal-new-user.scss
+```scss
+.new-user {
+  ...
+}
+```
+
+**BOM**
+
+_modal-new-user.scss
+```scss
+.modal-new-user {
+  ...
+}
+```
+
+Todo o estilo do componente deve ficar dentro da class principal, isso garante que ele não vai prejudicar os demais componentes do site.
+
+Exemplo:
+
+**RUIM**
+
+_modal-new-user.scss
+```
+.modal-new-user {
+  ...
+}
+
+.title {
+  ...
+}
+
+**BOM**
+
+_modal-new-user.scss
+```scss
+.modal-new-user {
+  ...
+
+  .title {
+    ...
+  }
+}
+
+
+### Cores
+
+Sempre utilizar a paleta de cores do projeto. Em caso de EXTREMA necessidade, adicionar uma nova cor no arquivo `_variables.scss`.
