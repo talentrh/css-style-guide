@@ -23,8 +23,10 @@
     - [Extend](#extend)
     - [Seletores agrupados](#seletores-agrupados)
   1. [Estrutura](#estrutura)
-    - [Normalize](#normalize)
-    - [Components](#components)
+    - [Normalize](#Normalize)
+    - [Components](#Components)
+    - [Blocks](#Blocks)
+    - [Colores](#cores)
 
 ## Terminologia
 
@@ -267,11 +269,11 @@ Quando os seletores se tornam muito longos, você provavelmente está escrevendo
 # Estrutura
 
 
-### normalize
+### Normalize
 
-Contém as configurações padrões do site ex: tipo da fonte, resetar margens, etc.
+O arquivo `normalize.scss` contém as configurações padrões do site ex: tipo da fonte, resetar magin/padding, etc.
 
-### components
+### Components
 
 Novos estilos devem ser criados na pasta `components`, o padrão para novos arquivos são:
 
