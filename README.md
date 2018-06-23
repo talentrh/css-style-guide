@@ -23,7 +23,7 @@
     - [Extend](#extend)
     - [Seletores agrupados](#seletores-agrupados)
   1. [Estrutura](#estrutura)
-    - [Normalize.scss](#normalize.scss)
+    - [Normalize](#normalize)
     - [Components](#components)
 
 ## Terminologia
@@ -264,10 +264,10 @@ Quando os seletores se tornam muito longos, você provavelmente está escrevendo
 * Excessivamente específico (poderoso) *—OU—*
 * Não reutilizável
 
-# Estrutura de arquivos
+# Estrutura
 
 
-### normalize.scss
+### normalize
 
 Contém as configurações padrões do site ex: tipo da fonte, resetar margens, etc.
 
