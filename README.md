@@ -278,7 +278,6 @@ Novos estilos devem ser criados na pasta `components`, o padrão para novos arqu
 * Nome iniciar com `_`.
 * Nome deve conter dashes `(-)` no lugar de camelCasing.
 
-Exemplo:
 **Ruim**
 
 ```
@@ -296,10 +295,9 @@ _meu-componente.scss
 Sempre utilizar uma class única na criação de um componente, essa class também deve ter o mesmo nome do arquivo sem `_` e `.scss`.
 Sempre que possível, utilize prefixos nos nomes dos componentes, ex: `_modal-`, `_card-`, `_list-`, etc.
 
-Exemplo:
 **RUIM**
 
-`Sem prefixo no nome`
+Sem prefixo no nome
 _new-user.scss
 ```scss
 .new-user {
@@ -307,7 +305,7 @@ _new-user.scss
 }
 ```
 
-`Nome do arquivo diferente da class principal`
+Nome do arquivo diferente da class principal
 _modal-new-user.scss
 ```scss
 .new-user {
@@ -339,6 +337,7 @@ _modal-new-user.scss
 .title {
   ...
 }
+```
 
 **BOM**
 
@@ -351,7 +350,7 @@ _modal-new-user.scss
     ...
   }
 }
-
+```
 
 ### Cores
 
